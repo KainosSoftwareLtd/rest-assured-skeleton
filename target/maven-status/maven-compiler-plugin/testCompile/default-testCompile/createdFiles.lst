@@ -1,0 +1,11 @@
+apiautomation/GetRequestTest.class
+automation/automation/orderscontroller/OrdersControllerDelete.class
+apiautomation/CreateJSONBody.class
+automation/automation/orderscontroller/OrdersControllerPost.class
+apiautomation/POSTRequest.class
+automation/dummytestcases/TestPropertyFile.class
+automation/automation/orderscontroller/OrdersControllerPut.class
+automation/automation/orderscontroller/TestNewRequest.class
+apiautomation/PutRequest.class
+automation/automation/orderscontroller/OrdersGetController.class
+apiautomation/LogRequestResponse.class
