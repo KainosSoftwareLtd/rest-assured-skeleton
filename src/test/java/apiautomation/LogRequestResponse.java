@@ -49,7 +49,7 @@ public class LogRequestResponse {
 	public void test2() {
 		RestAssured.baseURI = "http://xxxxx/";
 
-		String requestBody = "{\"customerLoginRequest\":{\"username\":\"vinay\",\"password\":\"VinayPass\"}}";
+		String requestBody = "{\"customerLoginRequest\":{\"username\":\"xxxxx\",\"password\":\"Passxxxxx\"}}";
 
 		Map<String, String> headersMap = new HashMap<>();
 
