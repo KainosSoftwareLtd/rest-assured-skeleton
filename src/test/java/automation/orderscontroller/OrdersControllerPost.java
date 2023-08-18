@@ -18,16 +18,16 @@ public class OrdersControllerPost {
 
 	@BeforeMethod
 	public void methodSetUp() {
-		RestAssured.baseURI = "http://3.8.18.118:3000";
+		RestAssured.baseURI = "http://xxxxxxx";
 		mHeaders.put("content-type", "application/json");
 	}
 
 	@Test(priority = 0)
 	public void testPOSTOrdersController() {
 
-		String requestBody = "{\r\n" + " \r\n" + "  \"orderDate\": \"2019-12-09T13:59:55.430Z\",\r\n"
-				+ "  \"requiredDate\": \"2019-11-07T13:59:55.430Z\",\r\n"
-				+ "  \"shippedDate\": \"2019-12-07T13:59:55.430Z\",\r\n" + "  \"status\": \"delivered\",\r\n"
+		String requestBody = "{\r\n" + " \r\n" + "  \"orderDate\": \"2023-12-09T13:59:55.430Z\",\r\n"
+				+ "  \"requiredDate\": \"2023-11-07T13:59:55.430Z\",\r\n"
+				+ "  \"shippedDate\": \"2023-12-07T13:59:55.430Z\",\r\n" + "  \"status\": \"delivered\",\r\n"
 				+ "  \"comments\": \"delivered to customer\",\r\n" + "  \"customersCustomerNumber\": 4567865678\r\n"
 				+ "\r\n" + "}";
 
