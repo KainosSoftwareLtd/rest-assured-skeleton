@@ -18,7 +18,7 @@ public class POSTRequest {
 
 		RestAssured.baseURI = "http://xxxxxx/";
 
-		String requestBody = "{\"customerLoginRequest\":{\"username\":\"vinay\",\"password\":\"VinayPass\"}}";
+		String requestBody = "{\"customerLoginRequest\":{\"username\":\"xxxxx\",\"password\":\"Passxxxxx\"}}";
 
 		Map<String, String> headersMap = new HashMap<>();
 
