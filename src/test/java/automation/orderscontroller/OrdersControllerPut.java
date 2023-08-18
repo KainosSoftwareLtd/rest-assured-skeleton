@@ -18,7 +18,7 @@ public class OrdersControllerPut {
 	
 	@BeforeMethod
 	public void methodSetUp() {
-		RestAssured.baseURI = "http://3.8.18.118:3000";
+		RestAssured.baseURI = "http://xxxxxx";
 		mHeaders.put("content-type", "application/json");
 	}
 
@@ -27,9 +27,9 @@ public class OrdersControllerPut {
 
 		String putRequestBody = "{\r\n" + 
 				"    \"orderNumber\": 2,\r\n" + 
-				"    \"orderDate\": \"2019-12-07T00:00:00.000Z\",\r\n" + 
-				"    \"requiredDate\": \"2019-12-07T00:00:00.000Z\",\r\n" + 
-				"    \"shippedDate\": \"2019-12-07T00:00:00.000Z\",\r\n" + 
+				"    \"orderDate\": \"2023-12-07T00:00:00.000Z\",\r\n" + 
+				"    \"requiredDate\": \"2023-12-07T00:00:00.000Z\",\r\n" + 
+				"    \"shippedDate\": \"2023-12-07T00:00:00.000Z\",\r\n" + 
 				"    \"status\": \"Delivered\",\r\n" + 
 				"    \"comments\": \"waiting for delivery\",\r\n" + 
 				"    \"customersCustomerNumber\": 0\r\n" + 
