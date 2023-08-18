@@ -23,8 +23,8 @@ public class CreateJSONBody {
 		headersMap.put("Content-Type", "application/json");
 
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("username", "vinay");
-		jsonObject.put("password", "VinayPass");
+		jsonObject.put("username", "xxxx");
+		jsonObject.put("password", "Passxxx");
 
 		JSONObject parentJsonObject = new JSONObject();
 		parentJsonObject.put("customerLoginRequest", jsonObject);
