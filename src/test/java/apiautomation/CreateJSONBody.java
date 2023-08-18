@@ -55,7 +55,7 @@ public class CreateJSONBody {
 
 		headersMap.put("Content-Type", "application/json");
 
-		Response response = RestAssured.given().pathParam("username", "vinay").pathParam("password", "VinayPass")
+		Response response = RestAssured.given().pathParam("username", "xxxx").pathParam("password", "Passxxxx")
 				.headers(headersMap).when().post("/customerLogin/{username}/{password}").then().extract().response();
 
 		System.out.println("Response is :" + response.asString());
