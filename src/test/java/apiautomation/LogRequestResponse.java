@@ -3,13 +3,14 @@ package apiautomation;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class LogRequestResponse {
-
+	private static final Logger logger = Logger.getLogger(LogRequestResponse.class);
 	
 	@Test
 	public void test() {
@@ -28,7 +29,7 @@ public class LogRequestResponse {
 				.extract()
 				.response();
 
-		System.out.println(response.asString());
+		logger.info(response.asString());
 		
 		
 		
@@ -69,7 +70,7 @@ public class LogRequestResponse {
 				.extract()
 				.response();
 
-		System.out.println("Response is :" + response.asString());
+		logger.info("Response is :" + response.asString());
 	}
 	
 }

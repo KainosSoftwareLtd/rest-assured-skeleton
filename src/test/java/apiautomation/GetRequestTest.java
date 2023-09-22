@@ -3,7 +3,7 @@ package apiautomation;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import org.apache.log4j.Logger;
 import com.jayway.jsonpath.JsonPath;
 
 import helper.HelperUtils;
@@ -11,6 +11,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class GetRequestTest {
+	private static final Logger logger = Logger.getLogger(GetRequestTest.class);
 
 	@BeforeClass
 	public void setUp() {
@@ -22,13 +23,10 @@ public class GetRequestTest {
 	public void testGetRequest() {
 
 		Response response = RestAssured.given().when().get("/getProduct?productId=1007").then().extract().response();
-		System.out.println(response.asString());
-
-		System.out.println("Status code is :" + response.statusCode());
-
+		logger.info(response.asString());
+		logger.info("Status code is :" + response.statusCode());
 		Assert.assertEquals(200, response.statusCode());
-
-		System.out.println("Status Line is :" + response.statusLine());
+		logger.info("Status Line is :" + response.statusLine());
 	}
 
 	@Test
@@ -37,15 +35,15 @@ public class GetRequestTest {
 		Response response = RestAssured.given().queryParam("productId", "1007").when().get("/getProduct").then()
 				.extract().response();
 
-		System.out.println(response.asString());
+		logger.info(response.asString());
 
-		System.out.println("Product Price is :"
+		logger.info("Product Price is :"
 				+ JsonPath.parse(response.asString()).read("$.getProductResponse.productPrice").toString());
 
-		System.out.println("Product Name is :"
+		logger.info("Product Name is :"
 				+ JsonPath.parse(response.asString()).read("$.getProductResponse.productName").toString());
 
-		System.out.println("Product Id is :"
+		logger.info("Product Id is :"
 				+ JsonPath.parse(response.asString()).read("$.getProductResponse.productId").toString());
 
 	}

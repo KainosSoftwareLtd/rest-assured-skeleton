@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import automation.dummytestcases.TestPropertyFile;
+import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -13,6 +15,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class OrdersControllerDelete {
+	private static final Logger logger = Logger.getLogger(OrdersControllerDelete.class);
 	public Map<String, String> mHeaders = new HashMap<>();
 
 	@BeforeMethod
@@ -26,8 +29,8 @@ public class OrdersControllerDelete {
 		Response putDeleteController = RestAssured.given().headers(mHeaders).delete("/orders/9")
 				.then().extract().response();
 
-		
-		System.out.println("Status code is :"+putDeleteController.getStatusCode());
+
+		logger.info("Status code is :"+putDeleteController.getStatusCode());
 		
 		Response getTotalOrdersResponse = RestAssured.given().headers(mHeaders).get("orders").then().extract()
 				.response();
@@ -37,8 +40,8 @@ public class OrdersControllerDelete {
 		//dataList.forEach(x->System.out.println(x));
 		
 		dataList.forEach(System.out::println);
-		
-		System.out.println(dataList.contains(9));
+
+		logger.info(dataList.contains(9));
 		
 	}
 

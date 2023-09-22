@@ -3,6 +3,7 @@ package automation.automation.orderscontroller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -14,7 +15,7 @@ import io.restassured.response.Response;
 
 
 public class OrdersGetController {
-
+	private static final Logger logger = Logger.getLogger(OrdersGetController.class);
 	public Map<String, String> mHeaders = new HashMap<>();
 
 	@BeforeMethod
@@ -29,7 +30,7 @@ public class OrdersGetController {
 		Response getCountResponse = RestAssured.given().headers(mHeaders).get("orders/count").then().extract()
 				.response();
 
-		System.out.println("Count response is :" + getCountResponse.asString());
+		logger.info("Count response is :" + getCountResponse.asString());
 
 		Assert.assertEquals(200, getCountResponse.getStatusCode());
 

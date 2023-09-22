@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
@@ -13,7 +14,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class TestNewRequest {
-
+	private static final Logger logger = Logger.getLogger(TestNewRequest.class);
 	String password;
 
 	String email;
@@ -41,25 +42,25 @@ public class TestNewRequest {
 
 		Response signUp = RestAssured.given().headers(mHeaders).body(json.toString()).when().post("/customer/signup")
 				.then().extract().response();
-		System.out.println(signUp.asString());
+		logger.info(signUp.asString());
 
 		JSONObject loginRequestBody = new JSONObject();
 		loginRequestBody.put("email", email);
 		loginRequestBody.put("password", password);
 		Response loginResponse = RestAssured.given().headers(mHeaders).body(loginRequestBody.toString()).when()
 				.post("/customer/login").then().extract().response();
-		
-		System.out.println(loginResponse.asString());
+
+		logger.info(loginResponse.asString());
 
 		String tokenString = JsonPath.parse(loginResponse.asString()).read("$.token").toString();
-		
-		System.out.println("Token is :"+tokenString);
+
+		logger.info("Token is :"+tokenString);
 		mHeaders.put("Authorization", "Bearer " + tokenString);
 
 		Response getResponse = RestAssured.given().headers(mHeaders).body("").when().get("/customers/me").then()
 				.extract().response();
 
-		System.out.println(getResponse.asString());
+		logger.info(getResponse.asString());
 	}
 
 	private static String generateRandomString(final int length) {

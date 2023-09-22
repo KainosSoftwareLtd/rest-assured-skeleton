@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import com.jayway.jsonpath.JsonPath;
@@ -12,7 +13,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class POSTRequest {
-
+	private static final Logger logger = Logger.getLogger(POSTRequest.class);
 	@Test(enabled = false)
 	public void testPostRequest() {
 
@@ -27,15 +28,14 @@ public class POSTRequest {
 		Response response = RestAssured.given().body(requestBody).headers(headersMap).when().post("/customerLogin")
 				.then().extract().response();
 
-		System.out.println("Response is :" + response.asString());
+		logger.info("Response is :" + response.asString());
 
-		System.out
-				.println("Status code is :" + response.statusCode() + " and status line is :" + response.statusLine());
+		logger.info("Status code is :" + response.statusCode() + " and status line is :" + response.statusLine());
 
-		System.out.println(
+		logger.info(
 				"Session id is :" + JsonPath.parse(response.asString()).read("$.customerLoginResponse.sessionid"));
 
-		System.out.println("Status  Message is :"
+		logger.info("Status  Message is :"
 				+ JsonPath.parse(response.asString()).read("$.customerLoginResponse.statusMessage"));
 	}
 
@@ -52,15 +52,14 @@ public class POSTRequest {
 				.body(new File("E:\\apiautomation\\src\\test\\resources\\data\\LoginRequestBody.json"))
 				.headers(headersMap).post("/customerLogin").then().extract().response();
 
-		System.out.println("Response is :" + response.asString());
+		logger.info("Response is :" + response.asString());
 
-		System.out
-				.println("Status code is :" + response.statusCode() + " and status line is :" + response.statusLine());
+		logger.info("Status code is :" + response.statusCode() + " and status line is :" + response.statusLine());
 
-		System.out.println(
+		logger.info(
 				"Session id is :" + JsonPath.parse(response.asString()).read("$.customerLoginResponse.sessionid"));
 
-		System.out.println("Status  Message is :"
+		logger.info("Status  Message is :"
 				+ JsonPath.parse(response.asString()).read("$.customerLoginResponse.statusMessage"));
 	}
 

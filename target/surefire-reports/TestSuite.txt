@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 2, Time elapsed: 0.62 s <<< FAILURE! - in TestSuite
+setUp(apiautomation.GetRequestTest)  Time elapsed: 0.108 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "java.util.Properties.getProperty(String)" because "helper.HelperUtils.properties" is null
+	at apiautomation.GetRequestTest.setUp(GetRequestTest.java:18)
+
+test(automation.automation.orderscontroller.TestNewRequest)  Time elapsed: 0.4 s  <<< FAILURE!
+java.lang.IllegalStateException: Target host is null
+	at automation.automation.orderscontroller.TestNewRequest.test(TestNewRequest.java:43)
+

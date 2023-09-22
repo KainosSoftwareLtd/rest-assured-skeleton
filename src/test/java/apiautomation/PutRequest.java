@@ -3,6 +3,7 @@ package apiautomation;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import com.jayway.jsonpath.JsonPath;
@@ -11,7 +12,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class PutRequest {
-
+	private static final Logger logger = Logger.getLogger(PutRequest.class);
 	@Test
 	public void testPutRequest() {
 
@@ -34,7 +35,7 @@ public class PutRequest {
 		Response putResponse = RestAssured.given().headers(headersMap).body(productBody).put("addProduct").then()
 				.extract().response();
 
-		System.out.println("Put Response is :" + putResponse.asString());
+		logger.info("Put Response is :" + putResponse.asString());
 		
 		
 		/*String statusMessage=JsonPath.parse(putResponse.asString()).read("$.addProductResponse.statusMessage").toString();

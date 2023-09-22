@@ -3,6 +3,7 @@ package automation.automation.orderscontroller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,7 +14,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class OrdersControllerPut {
-	
+	private static final Logger logger = Logger.getLogger(OrdersControllerPut.class);
 	public Map<String, String> mHeaders = new HashMap<>();
 	
 	@BeforeMethod
@@ -38,14 +39,14 @@ public class OrdersControllerPut {
 		Response putOrdersController = RestAssured.given().headers(mHeaders).body(putRequestBody).put("/orders/2")
 				.then().extract().response();
 
-		System.out.println("Status code :" + putOrdersController.getStatusCode());
+		logger.info("Status code :" + putOrdersController.getStatusCode());
 
-		System.out.println("Response :" + putOrdersController.asString());
+		logger.info("Response :" + putOrdersController.asString());
 
 		Response getOrderDetailsResponse = RestAssured.given().headers(mHeaders).get("/orders/" + 2).then().extract()
 				.response();
 
-		System.out.println("Order 2 response data is :" + getOrderDetailsResponse.asString());
+		logger.info("Order 2 response data is :" + getOrderDetailsResponse.asString());
 		
 		
 		String status=JsonPath.parse(getOrderDetailsResponse.asString()).read("$.status").toString();

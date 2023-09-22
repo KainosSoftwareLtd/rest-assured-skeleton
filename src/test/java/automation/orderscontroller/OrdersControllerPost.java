@@ -3,6 +3,7 @@ package automation.automation.orderscontroller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,7 +14,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class OrdersControllerPost {
-
+	private static final Logger logger = Logger.getLogger(automation.automation.orderscontroller.OrdersControllerDelete.class);
 	public Map<String, String> mHeaders = new HashMap<>();
 
 	@BeforeMethod
@@ -34,7 +35,7 @@ public class OrdersControllerPost {
 		Response postOrdersController = RestAssured.given().headers(mHeaders).body(requestBody).post("/orders").then()
 				.extract().response();
 
-		System.out.println("PSOT Orders Controller  response is :" + postOrdersController.asString());
+		logger.info("PSOT Orders Controller  response is :" + postOrdersController.asString());
 
 		Assert.assertEquals(200, postOrdersController.getStatusCode());
 
@@ -44,7 +45,7 @@ public class OrdersControllerPost {
 		Response getOrderDetailsResponse = RestAssured.given().headers(mHeaders).get("/orders/" + orderNumber).then()
 				.extract().response();
 
-		System.out.println("New Order Number Get response is :" + getOrderDetailsResponse.asString());
+		logger.info("New Order Number Get response is :" + getOrderDetailsResponse.asString());
 
 		Assert.assertEquals(orderNumber,
 				Integer.parseInt(JsonPath.parse(getOrderDetailsResponse.asString()).read("$.orderNumber").toString()));
